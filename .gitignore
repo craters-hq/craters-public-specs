@@ -1,0 +1,9 @@
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs & caches
+*.log
+.cache/
