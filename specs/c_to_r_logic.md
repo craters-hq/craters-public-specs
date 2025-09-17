@@ -22,44 +22,8 @@
 
 ## Public mint sketch (illustrative, not final)
 For user *u* in epoch *E*:
-influence
-u
-	​
-
-=
-i∈receipts(u)
-∑
-	​
-
-ρ(i)λ(age
-i
-	​
-
-)s.t. σR
-u
-mint
-	​
-
-=B
-R
-	​
-
-⋅
-∑
-v
-	​
-
-influence
-v
-	​
-
-influence
-u
-	​
-
-	​
-
-
+influence_u = Σ(receipt_i for u) [ ρ(i) * λ(age_i) ]  # subject to σ
+R_mint_u    = B_R * ( influence_u / Σ_all influence )​
 > **Note:** Internals may adjust K, dampen self-loops, and account for retained C. Full formula + proofs will be published at launch.
 
 ## What is visible in MVP
