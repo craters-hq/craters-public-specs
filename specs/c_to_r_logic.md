@@ -22,5 +22,51 @@
 
 ## Public mint sketch (illustrative, not final)
 For user *u* in epoch *E*:
-influence_u = Σ(receipt_i for u) [ ρ(i) * λ(age_i) ] subject to σ
-R_mint_u = B_R * ( influence_u / Σ_all influence )
+influence
+u
+	​
+
+=
+i∈receipts(u)
+∑
+	​
+
+ρ(i)λ(age
+i
+	​
+
+)s.t. σR
+u
+mint
+	​
+
+=B
+R
+	​
+
+⋅
+∑
+v
+	​
+
+influence
+v
+	​
+
+influence
+u
+	​
+
+	​
+
+
+> **Note:** Internals may adjust K, dampen self-loops, and account for retained C. Full formula + proofs will be published at launch.
+
+## What is visible in MVP
+- User sees: `C balance`, `C received/spent`, and **R_future** (claim vouchers).
+- Exportable **receipts JSON** per user.
+
+## TODO
+- [ ] Publish concrete `ρ`, `λ`, and `σ` values for MVP auditing.
+- [ ] Add examples showing how tags route royalties at launch.
+- [ ] Add link to price-floor attestation plan (on-chain option).
