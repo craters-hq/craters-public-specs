@@ -8,7 +8,7 @@
 - `/specs/receipts_schema.md` — Signed-message receipt format (WIP examples)
 - `/specs/c_to_r_logic.md` — Public half of the “metabolic” C→R mint logic
 - `/specs/theme_conquest_rules.md` — Ranking, allocation, tie-breakers (for optional events)
-- `/docs/architecture_overview.md` — World Engine (off-chain) + on-chain settlement options
+- `/docs/architecture_overview.md` — Receipt Engine (off-chain) + on-chain settlement options
 - `/docs/compliance_notes.md` — R-as-income, KYC tiers, quotas, price-floor attestations
 - `/docs/migration_plan.md` — How MVP balances/receipts carry forward to launch
 - `/roadmap/README.md` — PoC → MVP → 100K users → R launch
