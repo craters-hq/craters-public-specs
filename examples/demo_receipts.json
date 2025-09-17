@@ -1,0 +1,26 @@
+[
+  {
+    "receipt_id": "rcpt_C1",
+    "type": "C_TRANSFER",
+    "user_id": "usr_A",
+    "post_id": "pst_X",
+    "theme_id": "thm_wk37",
+    "amount": 10,
+    "units": "C",
+    "ts": "2025-09-17T02:10:37Z",
+    "issuer": "craters.mvp.receipts_engine",
+    "sig": "SIGNATURE_PLACEHOLDER"
+  },
+  {
+    "receipt_id": "rcpt_R1",
+    "type": "THEME_R_AWARD",
+    "user_id": "usr_B",
+    "post_id": "pst_Y",
+    "theme_id": "thm_wk37",
+    "amount": 500,
+    "units": "R_future",
+    "ts": "2025-09-24T12:00:00Z",
+    "issuer": "craters.mvp.receipts_engine",
+    "sig": "SIGNATURE_PLACEHOLDER"
+  }
+]
