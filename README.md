@@ -5,14 +5,15 @@
 **Later (Launch):** **R** = attention-unit / ad currency. Advertisers convert fiat/stablecoin → R to run boosts. C→R mint logic credits users’ influence into **cash-out-able R** (subject to KYC/AML). Royalty splits flow to tagged parties; R price is managed with solvency/floor models. C always recirculates on-platform.
 
 ## Repo Map
-- `/specs/receipts_schema.md` — Signed-message receipt format (WIP examples)
-- `/specs/c_to_r_logic.md` — Public half of the “metabolic” C→R mint logic
-- `/specs/theme_conquest_rules.md` — Ranking, allocation, tie-breakers (for optional events)
-- `/docs/architecture_overview.md` — World Engine (off-chain) + on-chain settlement options
-- `/docs/compliance_notes.md` — R-as-income, KYC tiers, quotas, price-floor attestations
-- `/docs/migration_plan.md` — How MVP balances/receipts carry forward to launch
-- `/roadmap/README.md` — PoC → MVP → 100K users → R launch
-- `/examples/demo_receipts.json` — Redacted sample receipts
+
+- [Receipts schema](specs/receipts_schema.md) — Signed-message receipt format (WIP examples)
+- [C→R mint logic](specs/c_to_r_logic.md) — Public half of the “metabolic” model
+- [Theme Conquest rules](specs/theme_conquest_rules.md) — Ranking, allocation, tie-breakers
+- [Architecture overview](docs/architecture_overview.md) — Receipts Engine (off-chain) + on-chain options
+- [Migration plan](docs/migration_plan.md) — How MVP balances/receipts carry forward to launch
+- [Demo receipts (JSON)](examples/demo_receipts.json)
+- [Compliance notes](docs/compliance_notes.md) — (WIP)
+- [Roadmap](roadmap/README.md) — (WIP)
 
 ## Quick Overview
 - **Interactions → Receipts:** User actions (likes, tags, etc.) create **tamper-evident receipts** that track influence and royalty weights.
