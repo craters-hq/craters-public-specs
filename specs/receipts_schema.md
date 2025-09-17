@@ -24,7 +24,9 @@
 - `WHISTLE_*`: paired deduct/return receipts must net to zero unless appeal is upheld.
 
 ## Example
+
 ```json
+
 {
   "receipt_id": "rcpt_R1",
   "type": "THEME_R_AWARD",
@@ -37,13 +39,10 @@
   "issuer": "craters.mvp.worldengine",
   "sig": "SIGNATURE_PLACEHOLDER"
 }
-
+```
 ## TODO
 - [ ] Finalize signature scheme and rotation cadence.
 - [ ] Publish full invariant set + validator checklist.
-
-```markdown
----FILE: docs/migration_plan.md---
 
 # Migration Plan (MVP → Launch)
 
