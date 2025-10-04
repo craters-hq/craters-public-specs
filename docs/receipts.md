@@ -57,3 +57,4 @@ See `/examples/demo_receipts.json`.
 - On-chain anchors for daily digests.
 - R-issuance proofs derived from receipt sets.
 
+MVP format (array) vs v0.1 canonical (single). Use v0.1 going forward.
