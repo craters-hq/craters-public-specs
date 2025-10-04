@@ -1,47 +1,58 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://craters.co/specs/receipts.schema.json",
-  "title": "Craters Receipt v0.1.0",
-  "type": "object",
-  "required": ["receipt_id","ts","actor_id","action","target_id","value_basis","split_v1","signature","ver"],
-  "properties": {
-    "receipt_id": { "type": "string" },
-    "ts": { "type": "string", "format": "date-time" },
-    "actor_id": { "type": "string" },
-    "action": { "type": "string" },
-    "target_id": { "type": "string" },
-    "tags": { "type": "array", "items": { "type": "string" } },
-    "context": { "type": "object", "additionalProperties": true },
-    "value_basis": {
-      "type": "object",
-      "required": ["r_floor_cents","quota_bucket","weight"],
-      "properties": {
-        "r_floor_cents": { "type": "number" },
-        "quota_bucket": { "type": "string" },
-        "weight": { "type": "number" }
-      }
-    },
-    "split_v1": {
+  "title": "Craters Receipt or Bundle",
+  "oneOf": [
+    { "$ref": "#/$defs/receipt" },
+    {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["to","c_share"],
-        "properties": {
-          "to": { "type": "string" },
-          "c_share": { "type": "number", "minimum": 0, "maximum": 1 }
-        }
-      }
-    },
-    "signature": {
+      "items": { "$ref": "#/$defs/receipt" },
+      "minItems": 1
+    }
+  ],
+  "$defs": {
+    "receipt": {
       "type": "object",
-      "required": ["alg","pubkey","sig"],
+      "required": ["receipt_id","ts","actor_id","action","target_id","signature","ver"],
       "properties": {
-        "alg": { "type": "string", "enum": ["ed25519"] },
-        "pubkey": { "type": "string" },
-        "sig": { "type": "string" }
-      }
-    },
-    "ver": { "type": "string" }
-  },
-  "additionalProperties": false
+        "receipt_id": { "type": "string" },
+        "ts": { "type": "string", "format": "date-time" },
+        "actor_id": { "type": "string" },
+        "action": { "type": "string" },
+        "target_id": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "context": { "type": "object", "additionalProperties": true },
+        "value_basis": {
+          "type": "object",
+          "properties": {
+            "r_floor_cents": { "type": "number" },
+            "quota_bucket": { "type": "string" },
+            "weight": { "type": "number" }
+          },
+          "additionalProperties": true
+        },
+        "split_v1": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["to","c_share"],
+            "properties": {
+              "to": { "type": "string" },
+              "c_share": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          }
+        },
+        "signature": {
+          "type": "object",
+          "required": ["alg","pubkey","sig"],
+          "properties": {
+            "alg": { "type": "string" },
+            "pubkey": { "type": "string" },
+            "sig": { "type": "string" }
+          }
+        },
+        "ver": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
 }
