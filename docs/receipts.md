@@ -58,3 +58,17 @@ See `/examples/demo_receipts.json`.
 - R-issuance proofs derived from receipt sets.
 
 MVP format (array) vs v0.1 canonical (single). Use v0.1 going forward.
+
+| MVP field    | v0.1 field                               | Notes                                                                     |
+| ------------ | ---------------------------------------- | ------------------------------------------------------------------------- |
+| `receipt_id` | `receipt_id`                             | same                                                                      |
+| `type`       | `action`                                 | e.g., `C_TRANSFER` → `c.transfer`, `THEME_R_AWARD` → `theme.r_award`      |
+| `user_id`    | `actor_id`                               | who performed the action                                                  |
+| `post_id`    | `target_id`                              | id of post/comment/id                                                     |
+| `theme_id`   | `tags`                                   | turn into array, e.g., `["#wk37"]` or keep as `context.theme_id`          |
+| `amount`     | `value_basis.weight` or `context.amount` | for MVP keep in `context.amount`; v0.1 uses floor+quota for issuance math |
+| `units`      | `context.units`                          | keep as context until C/R are formalized                                  |
+| `ts`         | `ts`                                     | same                                                                      |
+| `issuer`     | `context.issuer`                         | keep as context                                                           |
+| `sig`        | `signature.sig`                          | split signature into `alg/pubkey/sig` when you sign for real              |
+
