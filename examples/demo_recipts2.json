@@ -1,0 +1,25 @@
+{
+  "receipt_id": "rcpt_01HF2ZV4Z6E8S3WQ9Q",
+  "ts": "2025-10-04T09:30:00Z",
+  "actor_id": "u_9ab3",
+  "action": "like.create",
+  "target_id": "post_77de",
+  "tags": ["#KoreanFood"],
+  "context": { "post_author": "u_44aa", "source": "web" },
+  "value_basis": {
+    "r_floor_cents": 12,
+    "quota_bucket": "viewer_daily_v1",
+    "weight": 1.0
+  },
+  "split_v1": [
+    { "to": "creator:u_44aa", "c_share": 0.60 },
+    { "to": "commenters",     "c_share": 0.20 },
+    { "to": "viewers",        "c_share": 0.20 }
+  ],
+  "signature": {
+    "alg": "ed25519",
+    "pubkey": "pk1y...a9",
+    "sig": "MEUCIQDm...=="
+  },
+  "ver": "0.1.0"
+}
