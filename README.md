@@ -1,3 +1,10 @@
+## Spec quick links
+- 📄 Receipts Spec: [`/docs/receipts.md`](docs/receipts.md)
+- 🧪 MVP Example (array): [`/examples/demo_receipts_mvp.json`](examples/demo_receipts_mvp.json)
+- 🧪 v0.1 Example (single): [`/examples/demo_receipt_v0.1.json`](examples/demo_receipt_v0.1.json)
+- 🧾 Changelog: [`/CHANGELOG.md`](CHANGELOG.md)
+- ✅ Schema: [`/specs/receipts.schema.json`](specs/receipts.schema.json)
+
 # Craters — Public Specs (MVP → Launch)
 
 **Short pitch:** Get tagged and collect royalties.  
