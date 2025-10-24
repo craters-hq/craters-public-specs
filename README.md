@@ -36,7 +36,7 @@ Speed and iteration. We publish **verifiable receipts** and plan to settle criti
 ## Links
 - Website: https://craters.co
 - Figma Demo: <link>
-- 20-sec Clip: <link>
+- 90-sec Clip: https://www.craters.co/demo
 - IR Deck (PDF): https://docsend.com/view/43an5e9a4848nn7h
 
 ## License
