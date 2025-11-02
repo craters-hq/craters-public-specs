@@ -19,7 +19,7 @@
 - [Architecture overview](docs/architecture_overview.md) — Receipts Engine (off-chain) + on-chain options
 - [Migration plan](docs/migration_plan.md) — How MVP balances/receipts carry forward to launch
 - [Demo receipts (JSON)](examples/demo_receipts.json)
-- [IR Deck (PDF)](deck/craters_ir_deck_v2.pdf)
+- [IR Deck (PDF)](deck/craters_ir_deck_v4.pdf)
 - [Compliance notes](docs/compliance_notes.md) — (WIP)
 - [Roadmap](roadmap/README.md) — (WIP)
 
@@ -35,7 +35,6 @@ Speed and iteration. We publish **verifiable receipts** and plan to settle criti
 
 ## Links
 - Website: https://craters.co
-- Figma Demo: <link>
 - 90-sec Clip: https://www.craters.co/demo
 - IR Deck (PDF): https://docsend.com/view/43an5e9a4848nn7h
 
