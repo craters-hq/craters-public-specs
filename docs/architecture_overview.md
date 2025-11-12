@@ -40,12 +40,12 @@
 <pre style="font-family: monospace; white-space: pre; overflow-x: auto; font-size: 13px; line-height: 1.2em;">
 
 ┌───────────────────────────────────────────────┐
-│               UNTRUSTED (USER)               │
-│  Browsers, mobile devices, prototype front   │
-│  • Posts / Comments / Forum Threads          │
-│  • Hashtag Reserve & Weekly Drops            │
-│  • Theme Conquest Interactions               │
-│  • Court Evidence Submission (user input)    │
+│               UNTRUSTED (USER)                │
+│  Browsers, mobile devices, prototype front    │
+│  • Posts / Comments / Forum Threads           │
+│  • Hashtag Reserve & Weekly Drops             │
+│  • Theme Conquest Interactions                │
+│  • Court Evidence Submission (user input)     │
 └───────────────────────────────────────────────┘
                       │
                       ▼
