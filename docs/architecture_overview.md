@@ -37,68 +37,70 @@
 ---
 ## Trust Boundaries
 
-┌────────────────────────────────────────────────────────────┐
-│                      UNTRUSTED (USER)                      │
-│  Browsers, mobile devices, prototype front-end             │
-│  • Posts / Comments / Forum Threads                        │
-│  • Hashtag Reserve & Weekly Drops                          │
-│  • Theme Conquest Interactions                             │
-│  • Court Evidence Submission (user-provided)               │
-└────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-                      [ TRUST BOUNDARY ]
-                    (Auth / Validation Layer)
-                              │
-                              ▼
-┌────────────────────────────────────────────────────────────┐
-│                    TRUSTED BACKEND (APP)                   │
-│  API Server, Receipt Engine, Wallet Service, Scheduler     │
-│  • Canonical Receipts (Tier A/B/C)                         │
-│  • C→R Minting & Settlement                                │
-│  • Wallet Derivation (C, R, Hashtag Pots)                  │
-│  • Forum/Threads Storage (hash-logged)                     │
-│  • Theme Conquest Scoring Engine                           │
-│  • Marketplace (Stewardship, Resale, Renewals)             │
-│  • Rate Limits, Idempotency, Nonce Enforcement             │
-│  • Evidence Hash Registry (Court intake)                   │
-└────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-                   [ RESTRICTED BOUNDARY ]
-              (Only signed, controlled transitions)
-                              │
-                              ▼
-┌────────────────────────────────────────────────────────────┐
-│               TRUSTED-RESTRICTED CORE (AUTHZ)              │
-│  Key Signer (Ed25519), Treasury Engine, Court Clerk        │
-│  • Signed Receipts (Tier A)                                │
-│  • Daily Manifests & Conquest Manifests                    │
-│  • Treasury R-purchase rules (pricing.json)                │
-│  • Treasury Buy-back Execution (recirculate/hold)          │
-│  • Court Case State Machine (intake → verdict)             │
-│  • Juror Assignment & Vote Tally Hashes                    │
-│  • CRL (Receipt Revocation List)                           │
-│  • Admin Actions (verification-required tags, freezes)     │
-└────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-               [ READ-ONLY PUBLICATION LAYER ]
-                 (No mutation; transparency)
-                              │
-                              ▼
-┌────────────────────────────────────────────────────────────┐
-│                        PUBLIC OUTPUTS                      │
-│  • Daily Manifests (Merkle-rooted)                         │
-│  • Court Manifests (verdict hashes, remedies)              │
-│  • Conquest Manifests (epoch scoring snapshots)            │
-│  • keys.json (public keys for verification)                │
-│  • pricing.json (published rulesets)                       │
-│  • limits.json (user-facing caps)                          │
-│  • Receipts Explorer (read-only audit UI)                  │
-│  • Evidence Hash Listings                                  │
-└────────────────────────────────────────────────────────────┘
+<pre style="font-family: monospace; white-space: pre; overflow-x: auto; font-size: 13px; line-height: 1.2em;">
 
+┌───────────────────────────────────────────────┐
+│               UNTRUSTED (USER)               │
+│  Browsers, mobile devices, prototype front   │
+│  • Posts / Comments / Forum Threads          │
+│  • Hashtag Reserve & Weekly Drops            │
+│  • Theme Conquest Interactions               │
+│  • Court Evidence Submission (user input)    │
+└───────────────────────────────────────────────┘
+                      │
+                      ▼
+              [ TRUST BOUNDARY ]
+            (Auth / Validation Layer)
+                      │
+                      ▼
+┌───────────────────────────────────────────────┐
+│              TRUSTED BACKEND (APP)            │
+│  API Server, Receipt Engine, Wallets, Jobs    │
+│  • Canonical Receipts (Tier A/B/C)            │
+│  • C→R Minting & Settlement                   │
+│  • Wallet Derivation (C, R, Hashtag Pots)     │
+│  • Forum/Threads Storage (hash-logged)        │
+│  • Theme Conquest Scoring Engine              │
+│  • Marketplace (Stewardship / Renewals)       │
+│  • Idempotency & Nonce Enforcement            │
+│  • Evidence Hash Registry (Court intake)      │
+└───────────────────────────────────────────────┘
+                      │
+                      ▼
+           [ RESTRICTED BOUNDARY ]
+         (Only signed, controlled ops)
+                      │
+                      ▼
+┌───────────────────────────────────────────────┐
+│         TRUSTED-RESTRICTED CORE (AUTHZ)       │
+│  Key Signer (Ed25519), Treasury, Court Clerk  │
+│  • Signed Receipts (Tier A)                   │
+│  • Daily & Conquest Manifests                 │
+│  • Treasury Buy-back Rules (pricing.json)     │
+│  • Court Case State (intake → verdict)        │
+│  • Juror Assignments & Vote Tallies           │
+│  • CRL (Receipt Revocation List)              │
+│  • Admin Actions (freeze / verify tags)       │
+└───────────────────────────────────────────────┘
+                      │
+                      ▼
+       [ READ-ONLY PUBLICATION LAYER ]
+            (Transparency; no mutation)
+                      │
+                      ▼
+┌───────────────────────────────────────────────┐
+│                PUBLIC OUTPUTS                 │
+│  • Daily Manifests (Merkle-rooted)            │
+│  • Court & Conquest Manifests                 │
+│  • keys.json (public keys)                    │
+│  • pricing.json / limits.json                 │
+│  • Receipts Explorer (read-only)              │
+│  • Evidence Hash Listings                     │
+└───────────────────────────────────────────────┘
+
+</pre>
+
+---
 
 ## Launch options (on-chain attestations)
 
