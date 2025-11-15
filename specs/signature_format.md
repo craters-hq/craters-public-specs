@@ -54,7 +54,7 @@ Notes:
 * `sig` is Base64 of the Ed25519 signature over the **raw hash bytes**.
 * The payload itself carries a **`version`** and **`type`** field; signers MUST verify them before accepting.
 
-## 4. Key Hierarchy (3-tier, per Lou’s recommendation)
+## 4. Key Hierarchy
 
 1) **Master CA (offline, shardable, effectively immortal)**
    - Signs *Operational CA* certs and **CRLs**.
