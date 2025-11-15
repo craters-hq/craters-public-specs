@@ -39,6 +39,10 @@
 
 ![Craters Trust Architecture](./trust_architecture_diagram_v1.svg)
 
+---
+## data-flow diagram
+
+![Craters Trust Architecture](./data-flow_v1.svg)
 
 ---
 
