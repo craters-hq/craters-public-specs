@@ -169,6 +169,23 @@ assert crl_json.not_revoked(signature.sig)
 * **Clock Skew:** Verifiers allow small skew on `created_at` but MUST enforce expiry.
 * **Transparency:** Every manifest includes `keys_version` and `pricing_version` used to compute that day’s receipts.
 
+### Idempotency vs Nonce (Craters usage)
+
+- **Idempotency Key** (client- or server-generated UUID in header/body):
+  Ensures **the same *transaction*** is processed at most once, even if retried.
+  Stored in an `idempotency_log` with (key, actor, action_fingerprint, response_hash, ttl).
+
+- **Nonce** (monotonic per actor):
+  Prevents **replay/reordering** of signed messages. Each actor has a strictly
+  increasing integer; the Receipt Engine rejects nonces ≤ last_seen.
+
+**Enforcement**
+- Idempotency prevents *duplicate* effects from network retries.
+- Nonce prevents *replay* or *reordering* of validly signed messages.
+
+**DB sketch**
+
+
 ## 9. Implementation Notes
 
 * Libraries: `libsodium`/`TweetNaCl` for Ed25519; standard SHA‑256.
