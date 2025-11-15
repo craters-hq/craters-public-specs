@@ -37,68 +37,8 @@
 ---
 ## Trust Boundaries
 
-<pre style="font-family: monospace; white-space: pre; overflow-x: auto; font-size: 13px; line-height: 1.2em;">
+![Craters Trust Architecture](./trust_architecture_diagram_v1.svg)
 
-┌───────────────────────────────────────────────┐
-│               UNTRUSTED (USER)                │
-│  Browsers, mobile devices, prototype front    │
-│  • Posts / Comments / Forum Threads           │
-│  • Hashtag Reserve & Weekly Drops             │
-│  • Theme Conquest Interactions                │
-│  • Court Evidence Submission (user input)     │
-└───────────────────────────────────────────────┘
-                      │
-                      ▼
-              [ TRUST BOUNDARY ]
-            (Auth / Validation Layer)
-                      │
-                      ▼
-┌───────────────────────────────────────────────┐
-│              TRUSTED BACKEND (APP)            │
-│  API Server, Receipt Engine, Wallets, Jobs    │
-│  • Canonical Receipts (Tier A/B/C)            │
-│  • C→R Minting & Settlement                   │
-│  • Wallet Derivation (C, R, Hashtag Pots)     │
-│  • Forum/Threads Storage (hash-logged)        │
-│  • Theme Conquest Scoring Engine              │
-│  • Marketplace (Stewardship / Renewals)       │
-│  • Idempotency & Nonce Enforcement            │
-│  • Evidence Hash Registry (Court intake)      │
-└───────────────────────────────────────────────┘
-                      │
-                      ▼
-           [ RESTRICTED BOUNDARY ]
-         (Only signed, controlled ops)
-                      │
-                      ▼
-┌───────────────────────────────────────────────┐
-│         TRUSTED-RESTRICTED CORE (AUTHZ)       │
-│  Key Signer (Ed25519), Treasury, Court Clerk  │
-│  • Signed Receipts (Tier A)                   │
-│  • Daily & Conquest Manifests                 │
-│  • Treasury Buy-back Rules (pricing.json)     │
-│  • Court Case State (intake → verdict)        │
-│  • Juror Assignments & Vote Tallies           │
-│  • CRL (Receipt Revocation List)              │
-│  • Admin Actions (freeze / verify tags)       │
-└───────────────────────────────────────────────┘
-                      │
-                      ▼
-       [ READ-ONLY PUBLICATION LAYER ]
-            (Transparency; no mutation)
-                      │
-                      ▼
-┌───────────────────────────────────────────────┐
-│                PUBLIC OUTPUTS                 │
-│  • Daily Manifests (Merkle-rooted)            │
-│  • Court & Conquest Manifests                 │
-│  • keys.json (public keys)                    │
-│  • pricing.json / limits.json                 │
-│  • Receipts Explorer (read-only)              │
-│  • Evidence Hash Listings                     │
-└───────────────────────────────────────────────┘
-
-</pre>
 
 ---
 
