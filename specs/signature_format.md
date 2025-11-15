@@ -54,33 +54,58 @@ Notes:
 * `sig` is Base64 of the Ed25519 signature over the **raw hash bytes**.
 * The payload itself carries a **`version`** and **`type`** field; signers MUST verify them before accepting.
 
-## 4. Key Hierarchy & Rotation
+## 4. Key Hierarchy (3-tier, per Lou’s recommendation)
 
-### 4.1 Master Key (Certificate Authority)
+1) **Master CA (offline, shardable, effectively immortal)**
+   - Signs *Operational CA* certs and **CRLs**.
+   - Never used online. Stored offline with multi-party ceremony.
 
-* Offline, split‑knowledge storage; used only to **issue/revoke subkeys**.
-* Publishes signed `keys.json` and `crl.json`.
+2) **Operational CA (nearline HSM, unlocked with human action)**
+   - Signs **Operational Signer** subkeys.
+   - Rotates ~6–12 months; at least two active to ease emergency rollover.
 
-### 4.2 Subkeys (Operational Signers)
+3) **Operational Signers (online, short-lived)**
+   - Sign **RECEIPT/MANIFEST/COURT/CONQUEST** objects.
+   - Rotate frequently (e.g., 30–90 days) or on incident.
 
-* Key IDs follow: `ed25519-YYYY-MM-<series>` (e.g., `ed25519-2025-10-a`).
-* Rotate on a fixed cadence (e.g., monthly/quarterly) or after incident.
-* Allowed uses are scoped: `{RECEIPT, MANIFEST, COURT, CONQUEST}`.
+### Public Documents
+- `/public/keys.json` contains the **certificate chain**:
+  - `master_ca` (pub), `operational_cas` (pub), and `signer_keys` (pub) with parent references.
+- `/public/crl.json` contains revocations for:
+  - operational signers, and (if ever needed) operational CAs.
 
-### 4.3 Public Keys Document (`/public/keys.json`)
-
+### Example (excerpt)
 ```json
 {
-  "version": "1.0.0",
-  "issued_by": "master-2025-01",
-  "keys": [
-    {"key_id":"ed25519-2025-10-a","alg":"ed25519","use":["RECEIPT","MANIFEST"],
-     "public_key_base64":"MCowBQYDK2VwAyEA…","created_at":"2025-10-01T00:00:00Z","expires_at":"2026-01-01T00:00:00Z","revoked":false}
+  "version": "1.1.0",
+  "master_ca": {
+    "key_id": "master-2025-01",
+    "public_key_base64": "…",
+    "created_at": "2025-01-01T00:00:00Z"
+  },
+  "operational_cas": [
+    {
+      "key_id": "opca-2025-10",
+      "parent": "master-2025-01",
+      "public_key_base64": "…",
+      "not_before": "2025-10-01T00:00:00Z",
+      "not_after":  "2026-04-01T00:00:00Z"
+    }
+  ],
+  "signer_keys": [
+    {
+      "key_id": "ed25519-2025-11-a",
+      "parent": "opca-2025-10",
+      "use": ["RECEIPT","MANIFEST"],
+      "public_key_base64": "…",
+      "not_before": "2025-11-01T00:00:00Z",
+      "not_after":  "2026-01-01T00:00:00Z",
+      "revoked": false
+    }
   ]
 }
 ```
 
-`keys.json` itself is signed by the **master key** and published with a detached signature: `keys.json.sig`.
 
 ## 5. Revocation (CRL)
 
