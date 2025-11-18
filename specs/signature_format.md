@@ -1,7 +1,7 @@
 # Craters Signature Format (v1)
 
-**Status:** Draft for public review
-**Scope:** Receipts, Manifests, Court & Conquest records
+**Status:** Draft for public review <br>
+**Scope:** Receipts, Manifests, Court & Conquest records <br>
 **Algorithms:** Ed25519 signatures over SHA‑256 framed payloads
 
 ## 1. Goals
@@ -124,6 +124,25 @@ Notes:
 ```
 
 `crl.json` is signed by the **master key**; verifiers MUST check revocation before accepting a signature.
+
+### Public Key Transparency / Escrow
+
+Operational signer public keys are not only shipped in `/public/keys.json`,
+they are also published to a **public transparency log** so that signatures
+can be verified long after keys themselves have expired.
+
+The implementation of this log is chain-/vendor-neutral. Examples include:
+
+- a certificate-transparency style log (append-only, Merkle-rooted), and/or  
+- periodic anchoring of the `keys.json` + `crl.json` digests to an
+  on-chaining layer (L1/L2 of choice).
+
+This ensures that:
+
+1. Verifiers can always obtain the historical public key material needed to
+   check old receipts and manifests, and  
+2. Any key revocations are visible in a public, tamper-evident location.
+
 
 ## 6. Receipt Payload Schema (excerpt)
 
